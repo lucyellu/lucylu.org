@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>It&#x27;s a Scroll World After All - Lucy Lu</title>
+<meta name="description" content="Building a DIY scanner to read 2,000-year-old scrolls that can&#x27;t be unrolled">
+<link rel="canonical" href="https://lucylu.org/writing/its-a-scroll-world-after-all/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lucy Lu">
+<meta property="og:title" content="It&#x27;s a Scroll World After All">
+<meta property="og:description" content="Building a DIY scanner to read 2,000-year-old scrolls that can&#x27;t be unrolled">
+<meta property="og:url" content="https://lucylu.org/writing/its-a-scroll-world-after-all/">
+<meta property="og:image" content="https://lucylu.org/writing/img/scroll-world/amber2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 38em; margin: 0 auto; padding: 2em 1em 4em; font: 18px/1.55 Georgia, "Times New Roman", serif; }
+  h1 { font-size: 1.6em; margin: .2em 0 .2em; }
+  h2 { font-size: 1.15em; margin: 1.6em 0 .3em; }
+  img { max-width: 100%; height: auto; }
+  blockquote { margin-left: 0; padding-left: 1em; border-left: 3px solid #8884; }
+  .note { font-size: .9em; opacity: .75; }
+  figure { margin: 1.5em 0; }
+  figure img, figure video { width: 100%; height: auto; display: block; border-radius: 4px; }
+  figcaption { font-size: .75em; opacity: .75; margin-top: .4em; }
+  .pair, .trio { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .trio { grid-template-columns: 1fr 1fr 1fr; }
+  .pair > figcaption, .trio > figcaption { grid-column: 1 / -1; }
+  .pair img, .pair video, .trio img { aspect-ratio: 3 / 4; object-fit: cover; height: 100%; }
+  .pair.wide img { aspect-ratio: 16 / 10; }
+  .tall img, .tall video { max-height: 80vh; object-fit: contain; }
+  .narrow img { max-width: 420px; margin: 0 auto; }
+  .sub { font-style: italic; opacity: .75; }
+  .lines { margin: 0 0 1.4em; }
+  .lines p { margin: 0; }
+  blockquote cite { display: block; font-size: .75em; font-style: normal; margin-top: .3em; }
+  .series-next { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid #8884; }
+  @media (max-width: 520px) {
+    .pair { grid-template-columns: 1fr; }
+    .pair img, .pair video { aspect-ratio: auto; }
+    .trio { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<script data-goatcounter="https://lucylu.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<p class="note"><a href="/writing/">&larr; Writing</a></p>
+<h1>It&#x27;s a Scroll World After All</h1>
+<p class="note">2026-10-19 · also on <a href="https://lulucy.org/post/its-a-scroll-world-after-all/">lulucy.org</a></p>
+<p class="sub">Building a DIY scanner to read 2,000-year-old scrolls that can't be unrolled</p><figure class="tall">
+  <video src="/writing/img/scroll-world/flyte_spin.mp4" poster="/writing/img/scroll-world/flyte_spin_poster.jpg" autoplay muted loop playsinline></video>
+  <figcaption>My fake Herculaneum scroll, spinning on a levitating planter. More on that later.</figcaption>
+</figure><p>In AD 79 Vesuvius buried a library.</p>
+<p>About eighteen hundred scrolls, in a villa in Herculaneum that probably belonged to Julius Caesar's father-in-law. The heat didn't burn them so much as bake them. They turned to charcoal, still rolled up. Every time someone tries to unroll one, it crumbles.</p>
+<p>So for more than two hundred and fifty years since they were dug up, they've mostly just sat there. A library you can hold but can't read.</p>
+<p>The Vesuvius Challenge is the attempt to read them without opening them. You CT scan the scroll at a particle accelerator, follow each wrap of papyrus through the 3D volume, flatten it out, then train a model to spot where the ink is. In 2023 it worked well enough that people read whole columns of a scroll for the first time in two thousand years.</p>
+<p>From October 2023 to the end of that year, I spent almost all of my time on it, and I kept going back long after. (I wrote a short post about it back then: <a href="https://lulucy.org/post/vesuvius-scroll-challenge/">Ancient Scrolls</a>.)</p><h2>The thing I couldn't get past</h2>
+<div class="lines">
+<p>Everyone keeps saying the scroll is 3D.</p>
+<p>But it's really 2D.</p>
+<p>Writing is a 2D thing.</p>
+<p>We just fold it 3D.</p>
+</div>
+<p>And the fold isn't arbitrary. It isn't a symmetrical cylinder or a rolled-up carpet. There's one specific face we care about, and it's wrapped around itself hundreds of times.</p>
+<p>The deeper I got, the more my questions stopped being about code and started being about stuff. What does papyrus actually look like up close? Is the crackle in the scans ink, or just the fibres? Does ink sink into the next layer when it's heated? Do we even know what blank papyrus from back then looks like?</p>
+<p>Nobody could hand me a Herculaneum scroll to check. So I made one.</p><h2>Papyrus, ink, reed pens</h2>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/papyrus_glow.jpg" alt="A sheet of papyrus held up in front of a lamp, its fibre grid glowing">
+  <video src="/writing/img/scroll-world/ink_live.mp4" poster="/writing/img/scroll-world/ink_live_poster.jpg" autoplay muted loop playsinline></video>
+  <figcaption>Left: a blank sheet against the lamp. The grid is two layers of papyrus strips pressed at right angles. Right: the ink and the reed pens.</figcaption>
+</figure>
+<p>The ink matters most. The Herculaneum scribes used carbon ink: soot and gum. That's the whole problem. Carbon ink on carbonised papyrus is carbon on carbon, and in an X-ray it barely shows up. So I used a carbon ink too, with reed pens, because the pen changes the stroke and the stroke changes what the model learns.</p>
+<p>All of it came from Amazon. Papyrus, reed pens, a bottle of ink. Two thousand years ago this was a whole industry along the Nile. Now it's a two-day delivery and a box, and I used the box too.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/papyrus_roll.jpg" alt="Rolling a sheet of papyrus into a scroll">
+  <img src="/writing/img/scroll-world/ink_jars.jpg" alt="Ink bottle, jars and a brush by the sink">
+  <figcaption>Rolling the first test scroll, and the ink station by the sink.</figcaption>
+</figure><h2>What I wrote on it</h2>
+<p>Here's the slightly embarrassing part. I wrote nonsense.</p>
+<figure>
+  <video src="/writing/img/scroll-world/kake_backlit.mp4" poster="/writing/img/scroll-world/kake_backlit_poster.jpg" autoplay muted loop playsinline></video>
+  <figcaption>A test sheet going from dark to backlit. It says LUCY, LUCIUS, CHEERIO and ΛΥΚΙΟΣ ΚΑΛΠΟΥΡΝΙΟΣ ΠΙΣΩΝ, which is Lucius Calpurnius Piso, the man whose villa it probably was. Then THE KAKE IS A LIE, and a slice of cake.</figcaption>
+</figure>
+<p>It's nonsense on purpose. A test target has to be easy to recognise when it comes back out the other side, so I wanted things I'd know at a glance:</p>
+<ul>
+  <li><b>Greek letters</b>, because the scrolls are in Greek, and some letters (like kappa) aren't symmetrical, so you can tell when an image is flipped.</li>
+  <li><b>π</b>, because pi kept turning up for me in the real scans (POT, in segment 433). I wanted to know what a real one looks like.</li>
+  <li><b>Measurements</b> (1 cm, 22.4 cm), so I'd know the scale.</li>
+  <li><b>A checkerboard</b>. To see how see-through something is, you need a background to compare it against, and traditionally that's a checkerboard.</li>
+  <li><b>The cake is a lie</b>, because if you're going to write a fake ancient scroll you might as well quote Portal.</li>
+</ul>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/greek_letters.jpg" alt="Close-up of reed-pen Greek letters and pi symbols on papyrus">
+  <img src="/writing/img/scroll-world/checker_sheet.jpg" alt="Backlit papyrus sheet with a big ink checkerboard">
+  <figcaption>Greek alphabet drills, and the checkerboard sheet in the light box.</figcaption>
+</figure><h2>The scanner</h2>
+<p>I don't have a particle accelerator. I had an Amazon box, a SAD lamp, and a levitating planter.</p>
+<figure class="pair">
+  <video src="/writing/img/scroll-world/box_live.mp4" poster="/writing/img/scroll-world/box_live_poster.jpg" autoplay muted loop playsinline></video>
+  <img src="/writing/img/scroll-world/flyte_backlit2.jpg" alt="Scroll on the levitating planter, backlit by the lamp inside the box">
+  <figcaption>The SAD lamp is the backlight. The scroll sits on a Lyfe planter, which floats and slowly turns over a magnetic Flyte base.</figcaption>
+</figure>
+<p>A light box is the cheap version of the real thing. A CT scan shoots X-rays through the scroll from every angle. I can't see through a rolled scroll with light, but I can see through one layer of papyrus, and turning the scroll means the camera gets every side without me touching it.</p>
+<p>A sun lamp, for a scroll that hasn't seen the sun since AD 79. It felt right.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/box_top.jpg" alt="Looking down into the cardboard box: lamp at the top, scroll stand, camera hole">
+  <video src="/writing/img/scroll-world/turntable_spin.mp4" poster="/writing/img/scroll-world/turntable_spin_poster.jpg" autoplay muted loop playsinline></video>
+  <figcaption>Inside the box, and version two: a turntable with the fragment in an acrylic frame, so it can be photographed flat from every angle.</figcaption>
+</figure>
+<figure>
+  <img src="/writing/img/scroll-world/rig_night.jpg" alt="The camera on a tripod pointed into the glowing box at night">
+  <figcaption>The whole rig at night. The camera goes through a hole cut in the box.</figcaption>
+</figure><h2>What the light showed</h2>
+<figure>
+  <img src="/writing/img/scroll-world/scroll_backlit.jpg" alt="The rolled scroll standing in the light box, glowing">
+</figure>
+<p>Backlit, papyrus stops being a sheet and turns into a grid. Horizontal strips over vertical strips, thick and thin, with dark knots where the plant was. Ink sits on top of all that, and from far enough away the fibres look a lot like writing.</p>
+<p>That was the first real thing I learned. Much of what looks like ink is just the papyrus. Its own texture is a signal, consistent the way skin is. So a model that knows what blank papyrus looks like might matter as much as one that knows what letters look like.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/fibres.jpg" alt="Backlit papyrus fibres, very close">
+  <img src="/writing/img/scroll-world/a_frame.jpg" alt="Two strips of papyrus leaning into an A shape, backlit">
+  <figcaption>Fibres up close, and two strips leaning together so I could see how the layers stack.</figcaption>
+</figure>
+<figure>
+  <img src="/writing/img/scroll-world/checker_lens.jpg" alt="Looking through a glass lens at the backlit checkerboard sheet">
+  <figcaption>Looking through glass at the checkerboard: what the camera sees, distorted, with a known pattern behind it.</figcaption>
+</figure><h2>Baking it</h2>
+<p>A real scroll got hit by a pyroclastic surge at a few hundred degrees. I had an air fryer.</p>
+<figure class="trio">
+  <img src="/writing/img/scroll-world/foil_fryer.jpg" alt="A foil-wrapped scroll in an air fryer basket">
+  <img src="/writing/img/scroll-world/fryer_160.jpg" alt="Air fryer display reading 160C">
+  <img src="/writing/img/scroll-world/second_bake.jpg" alt="Toasted papyrus sheets and a rolled scroll in the air fryer basket">
+  <figcaption>Wrapped in tin foil to keep the air out. Then round two.</figcaption>
+</figure>
+<p>Foil keeps the oxygen out, so in theory it chars instead of catching fire, which is roughly what happened in Herculaneum. I labelled the pieces before they went in (V.V, 5.5 cm), set it to about 375°F, and left it for hours.</p>
+<p>It didn't turn to charcoal. It toasted. The scroll came out the colour of a cinnamon stick, and the papyrus started splitting into its layers, the way the real ones flake.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/baked_scroll.jpg" alt="The baked scroll, toasted brown, held in a hand">
+  <img src="/writing/img/scroll-world/baked_in_box.jpg" alt="The baked scroll standing dark against the light box">
+  <figcaption>The scroll after baking, and back in the scanner, where it's nearly opaque now.</figcaption>
+</figure>
+<p>But the ink survived. Every letter. Carbon doesn't care about 375°F.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/baked_kake.jpg" alt="The baked test sheet, browned, with all the ink lettering intact">
+  <img src="/writing/img/scroll-world/peeling.jpg" alt="The baked test sheet peeling apart into layers">
+  <figcaption>The test sheet after the fryer. The cake is still a lie. Right: the layers coming apart.</figcaption>
+</figure>
+<figure>
+  <img src="/writing/img/scroll-world/amber2.jpg" alt="Baked papyrus held up to a window, glowing deep amber">
+  <figcaption>A baked sheet held up to the light goes this deep amber, like a cough drop. My favourite photo from the whole project.</figcaption>
+</figure>
+<p>The fryer didn't survive, sort of. It worked fine, but it smelled so strange afterwards that I didn't trust it with food again, so I bought a new one. If you're keeping score: one fake scroll, one air fryer.</p><h2>Trying to fake a CT scan</h2>
+<p>This was the actual point. The models learn from ground truth, places where we already know where the ink is, and there's very little of it. A handful of fragments and a few hand-labelled letters.</p>
+<p>So the idea was: if I wrote the scroll, I know exactly where every letter is. Take the photos, make them look like X-ray or CT slices, and you'd have as much ground truth as you can make in an afternoon.</p>
+<p>I swapped the phone for a DSLR, shot the sheets in the box, and pulled them into After Effects to grade them until they looked like slices from the scans.</p>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/dslr_sheet.jpg" alt="DSLR photo of the backlit test sheet with Greek letters and a checkerboard">
+  <img src="/writing/img/scroll-world/fake_ct.jpg" alt="The same sheet graded in After Effects into a dark greyscale fake scan">
+  <figcaption>Left: the test sheet, shot on the DSLR. Right: the same sheet after After Effects, my attempt at a CT slice.</figcaption>
+</figure>
+<figure>
+  <video src="/writing/img/scroll-world/real_seg335_layers.mp4" poster="/writing/img/scroll-world/real_seg335_layers_poster.jpg" autoplay muted loop playsinline></video>
+  <figcaption>The real thing for comparison: segment 335 from Scroll 1, flicking through its 64 layers. Scan data: Vesuvius Challenge.</figcaption>
+</figure>
+<p>It didn't really work.</p>
+<p>Put them side by side and you can see why. In mine, the fibre grid takes over everything, and the letters are dark blobs sitting on top. In the real scan, the papyrus is a soft grey noise and the ink isn't a shape at all. It's a texture, a crackle, slightly different from the papyrus around it. I'd made a photo that looked like a scan. I hadn't made something with the same physics.</p>
+<p>I still think it was the right question to ask. And it changed how I looked at the real scans. The crackle wasn't just noise to me anymore. I'd watched my own papyrus do it.</p><h2>Then I burned it</h2>
+<figure class="pair">
+  <img src="/writing/img/scroll-world/burn_before.jpg" alt="A small inked papyrus fragment, half painted in checkerboard">
+  <img src="/writing/img/scroll-world/burn.jpg" alt="The same fragment with a match flame touching it">
+  <figcaption>December. A fragment from the test sheet, and then a match.</figcaption>
+</figure>
+<p>The air fryer was a gentle bake. Vesuvius wasn't. I wanted to see what an actual flame does to carbon ink on papyrus.</p><h2>Back to the real ones</h2>
+<figure>
+  <img src="/writing/img/scroll-world/projector.jpg" alt="A segment of Scroll 1 projected large across a wall, next to monitors of code">
+  <figcaption>A segment of Scroll 1, projected across my wall.</figcaption>
+</figure>
+<p>After all that I went back to the real scans.</p>
+<div class="lines">
+<p>These models are trained after us.</p>
+<p>Made in our image.</p>
+<p>Taught our languages, our stories, our data.</p>
+</div>
+<p>And it turns out the quickest way to understand what a model is looking at is to make the thing it's looking at. Badly, in an air fryer, with a cake joke on it.</p>
+<p>Maybe that's the whole lesson. When something seems stuck in three dimensions, go and make one yourself. You'll learn which parts are hard and which parts are just folded.</p><p class="series-next">Part 2: <a href="https://lulucy.org/post/its-a-scroll-world-after-all-part-2/">The Readers Before Us</a>, what I learned from the people who tried to read the scrolls before us.</p>
+</body>
+</html>
